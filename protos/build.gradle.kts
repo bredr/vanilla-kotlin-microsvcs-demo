@@ -6,17 +6,13 @@ import com.google.protobuf.gradle.protobuf
 import com.google.protobuf.gradle.protoc
 
 plugins {
-    kotlin("jvm")
+    id("org.jetbrains.kotlin.jvm")
     id("com.google.protobuf")
     `java-library`
 }
 
 version = "0.1.0"
 group = "protos"
-
-repositories {
-    mavenCentral()
-}
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${rootProject.ext["kotlinVersion"]}")
@@ -65,7 +61,7 @@ protobuf {
             artifact = "io.grpc:protoc-gen-grpc-java:${rootProject.ext["grpcVersion"]}"
         }
         id("grpckt") {
-            artifact = "io.grpc:protoc-gen-grpc-kotlin:${rootProject.ext["grpcKotlinVersion"]}"
+            artifact = "io.grpc:protoc-gen-grpc-kotlin:${rootProject.ext["grpcKotlinVersion"]}:jdk7@jar"
         }
     }
     generateProtoTasks {
